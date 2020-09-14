@@ -1,13 +1,7 @@
 *.iml
 .gradle
 /local.properties
-/.idea/dictionaries
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+/.idea
 .DS_Store
 /build
 /captures
@@ -17,4 +11,3 @@
 /app/build
 /app/release
 /app/debug
-/app/agconnect-services.json
