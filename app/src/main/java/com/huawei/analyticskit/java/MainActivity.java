@@ -38,20 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvQuestion = findViewById(R.id.tvQuestion);
         tvQuestion.setText(questions[curQuestionIdx]);
 
-        Button btnSettings = findViewById(R.id.btnSettings);
-        btnSettings.setOnClickListener(this);
-
-        Button btnNext = findViewById(R.id.btnNext);
-        btnNext.setOnClickListener(this);
-
-        Button btnAnswerTrue = findViewById(R.id.btnAnswerTrue);
-        btnAnswerTrue.setOnClickListener(this);
-
-        Button btnAnswerFalse = findViewById(R.id.btnAnswerFalse);
-        btnAnswerFalse.setOnClickListener(this);
-
-        Button btnPostScore = findViewById(R.id.btnPostScore);
-        btnPostScore.setOnClickListener(this);
+        findViewById(R.id.btnSettings).setOnClickListener(this);
+        findViewById(R.id.btnNext).setOnClickListener(this);
+        findViewById(R.id.btnAnswerTrue).setOnClickListener(this);
+        findViewById(R.id.btnAnswerFalse).setOnClickListener(this);
+        findViewById(R.id.btnPostScore).setOnClickListener(this);
     }
 
     @Override
@@ -94,10 +85,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (answer == answers[curQuestionIdx]) {
             score += 20;
             Toast.makeText(this, R.string.correct_answer, Toast.LENGTH_SHORT).show();
-            // Report a customized Event
         } else {
             Toast.makeText(this, R.string.wrong_answer, Toast.LENGTH_SHORT).show();
-            // Report a customized Event
         }
     }
 }

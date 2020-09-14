@@ -21,9 +21,8 @@ public class SettingActivity extends AppCompatActivity {
         hiAnalyticsWrapper.setUpUserId();
 
         final EditText etFavouriteSport = findViewById(R.id.etFavouriteSport);
-        final Button btnSaveSettings = findViewById(R.id.btnSaveSettings);
 
-        btnSaveSettings.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnSaveSettings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String strFavorSport = etFavouriteSport.getText().toString().trim();
