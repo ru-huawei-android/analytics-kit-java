@@ -21,15 +21,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int curQuestionIdx = 0;
     private int score = 0;
 
-    private HiAnalyticsWrapper mHiAnalyticsWrapper;
+    private HiAnalyticsWrapper hiAnalyticsWrapper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mHiAnalyticsWrapper = new HiAnalyticsWrapper(this);
-        mHiAnalyticsWrapper.setUpUserId();
+        hiAnalyticsWrapper = new HiAnalyticsWrapper(this);
+        hiAnalyticsWrapper.setUpUserId();
 
         // Retrieve questions from resources
         questions = getResources().getStringArray(R.array.questions);
@@ -70,17 +70,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnAnswerTrue:
                 checkAnswer(true);
                 String questions = tvQuestion.getText().toString().trim();
-                mHiAnalyticsWrapper.reportAnswerEvt(questions, "true");
+                hiAnalyticsWrapper.reportAnswerEvt(questions, "true");
                 break;
 
             case R.id.btnAnswerFalse:
                 checkAnswer(false);
                 String question = tvQuestion.getText().toString().trim();
-                mHiAnalyticsWrapper.reportAnswerEvt(question, "false");
+                hiAnalyticsWrapper.reportAnswerEvt(question, "false");
                 break;
 
             case R.id.btnPostScore:
-                mHiAnalyticsWrapper.postScore(score);
+                hiAnalyticsWrapper.postScore(score);
                 Toast.makeText(this, R.string.post_report_answer, Toast.LENGTH_SHORT).show();
                 break;
         }

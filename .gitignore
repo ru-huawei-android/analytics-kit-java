@@ -16,4 +16,5 @@
 
 /app/build
 /app/release
+/app/debug
 /app/agconnect-services.json

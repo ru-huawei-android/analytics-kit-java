@@ -10,15 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingActivity extends AppCompatActivity {
 
-    private HiAnalyticsWrapper mHiAnalyticsWrapper;
+    private HiAnalyticsWrapper hiAnalyticsWrapper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        mHiAnalyticsWrapper = new HiAnalyticsWrapper(this);
-        mHiAnalyticsWrapper.setUpUserId();
+        hiAnalyticsWrapper = new HiAnalyticsWrapper(this);
+        hiAnalyticsWrapper.setUpUserId();
 
         final EditText etFavouriteSport = findViewById(R.id.etFavouriteSport);
         final Button btnSaveSettings = findViewById(R.id.btnSaveSettings);
@@ -27,7 +27,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String strFavorSport = etFavouriteSport.getText().toString().trim();
-                mHiAnalyticsWrapper.setUserProfile(strFavorSport);
+                hiAnalyticsWrapper.setUserProfile(strFavorSport);
             }
         });
     }

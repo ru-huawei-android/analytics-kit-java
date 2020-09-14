@@ -32,19 +32,19 @@ public class HiAnalyticsWrapper {
 
     private static String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    private Context mContext;
-    private HiAnalyticsInstance mInstance = null;
+    private Context context;
+    private HiAnalyticsInstance instance = null;
 
     public HiAnalyticsWrapper(Context context) {
-        mContext = context;
+        this.context = context;
 
         // Initiate Analytics Kit
         // Enable Analytics Kit Log
         HiAnalyticsTools.enableLog();
 
-        if (isHmsAvailable(mContext)) {
+        if (isHmsAvailable(context)) {
             // Generate the Analytics Instance
-            mInstance = HiAnalytics.getInstance(mContext);
+            instance = HiAnalytics.getInstance(context);
         }
     }
 
@@ -71,7 +71,7 @@ public class HiAnalyticsWrapper {
         bundle.putString(EVENT_QUESTION_TIME, sdf.format(new Date()));
 
         // Report a customized Event
-        mInstance.onEvent(EVENT_ANSWER, bundle);
+        instance.onEvent(EVENT_ANSWER, bundle);
     }
 
     /**
@@ -83,18 +83,17 @@ public class HiAnalyticsWrapper {
         bundle.putLong(SCORE, score);
 
         // Report a predefined Event
-        mInstance.onEvent(SUBMITSCORE, bundle);
-
+        instance.onEvent(SUBMITSCORE, bundle);
     }
 
     void setUserProfile(String sport) {
-        mInstance.setUserProfile(USER_PROFILE_TAG, sport);
+        instance.setUserProfile(USER_PROFILE_TAG, sport);
     }
 
     void setUpUserId() {
-        if (mInstance != null) {
-            String id = HmsInstanceId.getInstance(mContext).getId();
-            mInstance.setUserId(id);
+        if (instance != null) {
+            String id = HmsInstanceId.getInstance(context).getId();
+            instance.setUserId(id);
             Log.i(TAG, "AAID: " + id);
         }
     }
