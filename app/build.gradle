@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.huawei.agconnect'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.huawei.analyticskit.java"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        config {
+            storeFile file('AnalyticsKitDemo.jks')
+            storePassword 'analytics'
+            keyAlias 'analytics'
+            keyPassword 'analytics'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'META-INF/androidx.vectordrawable_vectordrawable.version'
+        exclude 'META-INF/androidx.arch.core_core-runtime.version'
+        exclude 'META-INF/androidx.loader_loader.version'
+        exclude 'META-INF/androidx.versionedparcelable_versionedparcelable.version'
+        exclude 'META-INF/androidx.lifecycle_lifecycle-livedata.version'
+        exclude 'META-INF/androidx.vectordrawable_vectordrawable-animated.version'
+        exclude 'META-INF/androidx.savedstate_savedstate.version'
+        exclude 'META-INF/androidx.interpolator_interpolator.version'
+        exclude 'META-INF/androidx.lifecycle_lifecycle-runtime.version'
+        exclude 'META-INF/androidx.fragment_fragment.version'
+        exclude 'META-INF/androidx.appcompat_appcompat-resources.version'
+        exclude 'META-INF/androidx.activity_activity.version'
+        exclude 'META-INF/androidx.appcompat_appcompat.version'
+        exclude 'META-INF/androidx.viewpager_viewpager.version'
+        exclude 'META-INF/androidx.cursoradapter_cursoradapter.version'
+        exclude 'META-INF/androidx.customview_customview.version'
+        exclude 'META-INF/androidx.lifecycle_lifecycle-viewmodel.version'
+        exclude 'META-INF/androidx.core_core.version'
+        exclude 'META-INF/androidx.drawerlayout_drawerlayout.version'
+        exclude 'okhttp3/internal/publicsuffix/publicsuffixes.gz'
+        exclude 'agconnect-core.properties'
+        exclude 'agconnect-credential.properties'
+        exclude 'META-INF/androidx.lifecycle_lifecycle-livedata-core.version'
+        exclude 'res/layout/notification_action.xml'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.huawei.agconnect:agconnect-core:1.4.0.300'
+    implementation 'com.huawei.hms:hianalytics:5.0.3.300'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
